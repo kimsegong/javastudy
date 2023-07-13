@@ -67,6 +67,8 @@ public class MainWrapper {
     System.out.println(result5);
     System.out.println(result6);
     
+    
+    
     //논리 연산
     //1. 논리 AND : &&, 모든 조건이 만족하면 true, 아니면 false
     //2. 논리 OR  : ||, 하나의 조건이라도 만족하면 true, 아니면 false
@@ -82,9 +84,56 @@ public class MainWrapper {
     System.out.println(orResult);
     System.out.println(notResult);
     
+    // Short Circuit Evaluation
+    // 1. 논리 AND : 결과가 false인 조건이 나타나면 더 이상 조건을 체크하지 않는다. 최종결과가 false로 정해졌기 때문이다.
+    // 2. 논리 OR  : 결과가 true인 조건이 나타나면 더 이상 조건을 체크하지 않는다. 최조결과가 true로 정해졌기 때문이다.
+    int i = 10;
+    int j = 10;
     
+    boolean andSceResult = (++i == 10) && (++j == 10);
+    System.out.println(andSceResult);
+    System.out.println(i);
+    System.out.println(j);
+    
+    boolean orSceResult = (j++ == 10) || (i++ == 10);
+    System.out.println(orSceResult);
+    System.out.println(i);
+    System.out.println(j);
+   
             
   }
+  
+  // ex05 메소드 정의
+  public static void ex05() {
+    
+    //조건 연산자(3개의 항을 사용하므로 삼항 연산이라고도 한다.)
+    //조건식 ? true인 경우 결과 : false인 경우 결과
+    
+    int score = 100;
+    
+    String result = (score >= 60) ? "합격" : "불합격";
+    
+    
+    System.out.println(result);
+  }
+  
+  
+  //ex06 메소드 정의
+  public static void ex06 () {
+    
+    //문자열 연결
+    String str1 = "구디" + "아카데미";
+    
+    System.out.println(str1);
+ 
+   //정수 -> 문자열
+   //실수 -> 문자열
+    String str2 = 100 + "";
+    String str3 = 0.5 + "";
+       
+    System.out.println(str2 + str3);
+  }
+  
   
  
   public static void main(String[] args) {
@@ -93,7 +142,9 @@ public class MainWrapper {
     //hello();
     //ex02();  
     //ex03();
-    ex04();
+    //x04();
+    //ex05();
+    ex06();
     
     
   }
@@ -143,10 +194,19 @@ public class MainWrapper {
      
       
     }
+ 
+ 
+   
+ }
+ 
+ 
+ 
+ 
+ 
+ 
     
     
   
  
   
-  
-}
+
