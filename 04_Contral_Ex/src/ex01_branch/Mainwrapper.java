@@ -165,6 +165,7 @@ public class Mainwrapper {
      break;
    case 4 :
      weekname = "목";
+     
      break;
    case 5 :
      weekname = "금";

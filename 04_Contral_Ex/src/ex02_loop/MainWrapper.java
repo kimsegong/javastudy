@@ -76,6 +76,7 @@ public class MainWrapper {
     System.out.print("2x1=2");  // 2x1=2를 출력한 뒤 줄을 바꾸지 않는다.
     
     
+    
   }
   
   public static void ex05() {
@@ -139,6 +140,20 @@ public class MainWrapper {
     // a=3     *****
     // a=4    *******
     // a=5   *********
+ int n = 9;
+    
+    for(int a = 1; a <= n; a++) {
+      for(int b = 5; b >= a; b++) {
+        
+        System.out.print("*");
+        
+      }
+      System.out.println();
+      
+    }
+    
+    
+    
     
   }
   
@@ -171,7 +186,8 @@ public class MainWrapper {
     //ex02();
     //ex03();
     //ex05();
-    ex06();
+    //ex06();
+    ex07();
   
   
   }

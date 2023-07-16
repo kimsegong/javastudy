@@ -27,9 +27,10 @@ public static void ex01() {
   
   average = sum / (float)score.length;
   
-System.out.println("총합 :" + sum);
-System.out.println("평균 :" + average);
-  
+System.out.println("총합 :" + sum + "입니다.");
+System.out.println("평균 :" + average + "입니다.");
+  //총합을 나타내는 결과식
+
   
   
   
