@@ -14,6 +14,21 @@ public class MyWay {
     ex01();
   }
 
+  public static void ex02() {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  }   
+  
+  
 public static void ex01() {
   
   int sum = 0;
@@ -37,15 +52,6 @@ System.out.println("평균 :" + average + "입니다.");
   
   
 }
-
-
-
-
-
-
-
-
-
 
 
 

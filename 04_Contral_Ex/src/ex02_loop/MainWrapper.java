@@ -50,12 +50,13 @@ public class MainWrapper {
     // 2 x 1 = 2
     // ...
     // 9 x 9 = 81
+    // 고정 값 : 바깥 LOOP에 배치
     
     for(int a = 2; a <= 9; a++) {
        for(int b = 1; b <= 9; b++) {
         
          
-         //int result = a * b;
+         
          System.out.println( a + " * " + b + "=" + a * b);
        }
        
@@ -72,11 +73,18 @@ public class MainWrapper {
     // ...
     // 2x9=18 3x9=27 4x9=36 ... 9x9=81
     
+    for(int n = 1; n <= 9; n++) {
+      for(int dan = 2; dan <= 9; dan++) {
+        System.out.print(dan + " X " + n + "=" + String.format("%-4d", (dan * n)));
+      }
+      System.out.println(); //줄 바꿈 
+     
+      
+    }
+    
     // 참고할코드
-    System.out.print("2x1=2");  // 2x1=2를 출력한 뒤 줄을 바꾸지 않는다.
-    
-    
-    
+    //System.out.print("2x1=2");  // 2x1=2를 출력한 뒤 줄을 바꾸지 않는다.
+   
   }
   
   public static void ex05() {
@@ -87,9 +95,16 @@ public class MainWrapper {
     // a=3   ***
     // a=4   ****
     // a=5   *****
-    int n = 5;
+    // a=1, star=1~1
+    // a=2, star=1~2
+    // a=3, star=1~3
+    // a=4, star=1~4
+    // a=5, star=1~5
     
-    for(int a = 1; a <= n; a++) {
+    
+   
+    
+    for(int a = 1; a <= 5; a++) {
       for(int b = 1; b <= a; b++) {
         
         System.out.print("*");
@@ -115,10 +130,10 @@ public class MainWrapper {
     // a=3   ***
     // a=4   **
     // a=5   *
- int n = 5;
+
     
-    for(int a = 1; a <= n; a++) {
-      for(int b = n; b >= a; b--) {
+    for(int a = 1; a <= 5; a++) {
+      for(int b = 5; b >= a; b--) { //위에 식에서 6-a로 가능
         
         System.out.print("*");
         
@@ -134,20 +149,29 @@ public class MainWrapper {
   
   public static void ex07() {
     // 삼각별 출력하기 - 3 (2중 loop)
-    //     b=123456789
-    // a=1       *
-    // a=2      ***
-    // a=3     *****
-    // a=4    *******
-    // a=5   *********
- int n = 9;
+    //     space/star=123456789
+    //row=1               *
+    //row=2              ***
+    //row=3             *****
+    //row=4            *******
+    //row=5           *********
+    //
+    // row=1, space=1~4, star=5~5
+    // row=2, space=1~3, star=4~6
+    // row=3, space=1~2, star=3~7
+    // row=4, space=1~1, star=2~8
+    // row=5, space=1~0, star=1~9
     
-    for(int a = 1; a <= n; a++) {
-      for(int b = 5; b >= a; b++) {
+    for(int row = 1; row<= 5; row++) {
+      for(int space=1; space<= 5-row; space++) {
         
-        System.out.print("*");
-        
+        System.out.print(" ");        
       }
+      
+      for(int star= 6-row; star<=row + 4; star++) {
+        System.out.print("*");
+      }
+        
       System.out.println();
       
     }
@@ -159,35 +183,52 @@ public class MainWrapper {
   
   public static void ex08() {
     // 삼각별 출력하기 - 4 (2중 loop)
-    //     b=123456789
-    // a=1   *********
-    // a=2    *******
-    // a=3     *****
-    // a=4      ***
-    // a=5       *
+    //     space/star=123456789
+    // row=1          *********
+    // row=2           *******
+    // row=3            *****
+    // row=4             ***
+    // row=5              *
+    // row=1, space=1~0, star=1~9
+    // row=2, space=1~1, star=2~8
+    // row=3, space=1~2, star=3~7
+    // row=4, space=1~3, star=4~6
+    // row=5, space=1~4, star=5~5
+    
+    for(int row = 1; row<= 5; row++) {
+      for(int space=1; space<= row-1; space++) {
+        
+        
+        System.out.print(" ");
+        
+      }
+      for(int star= row; star<= 10 - row ; star++) {
+        System.out.print("*");
+      }
+        
+      System.out.println();
+      
+    }
+ 
     
   }
   
   
-  
-  
-  
-
-
-  
-  
-  
-  
+ 
   
   
   public static void main(String[] args) {
     
+
+
     //ex01();
     //ex02();
     //ex03();
-    //ex05();
+    //ex04();
+    //ex05();   
     //ex06();
-    ex07();
+    //ex07();
+    ex08();
   
   
   }
