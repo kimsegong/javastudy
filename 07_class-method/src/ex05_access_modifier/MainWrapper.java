@@ -9,6 +9,10 @@ public class MainWrapper {
     u.setId("admin");
     System.out.println(u.getId());
     
+    Usera f = new Usera();
+    
+    f.ageId = 1000;   
+    System.out.println(f.ageeId());
 
   }
 
