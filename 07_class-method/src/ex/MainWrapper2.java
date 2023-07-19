@@ -10,6 +10,7 @@ public class MainWrapper2 {
     a++;
     b++;
     
+    
     System.out.println("ex01의 a =" + a);
     System.out.println("ex01의 b =" + b);
   }
@@ -22,5 +23,6 @@ public class MainWrapper2 {
     System.out.println("main의 a =" + a);
     System.out.println("main의 b =" + b);
   }
+  
 
 }

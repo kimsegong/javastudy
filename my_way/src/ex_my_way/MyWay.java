@@ -1,61 +1,28 @@
 package ex_my_way;
 
+class Data2 {int x;}
+
 public class MyWay {
  
 
   public static void main(String[] args) {
     
-    for(int i =1; i <= 5; i++) {
-      System.out.println("**********");
-    }
-    
-    
-    
-    ex01();
-  }
+  Data2 d = new Data2();
+  d.x = 10;
+  System.out.println("main() : x =" + d.x);
 
-  public static void ex02() {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  }   
-  
-  
-public static void ex01() {
-  
-  int sum = 0;
-  float average = 0f;
-  
-  int[] score = {100, 88, 100, 100, 90};
-  
-  for (int i = 0; i < score.length; i++) {
-    sum += score[i];
-  }
-  
-  average = sum / (float)score.length;
-  
-System.out.println("총합 :" + sum + "입니다.");
-System.out.println("평균 :" + average + "입니다.");
-  //총합을 나타내는 결과식
+   change(d);
+   System.out.println("After change(d)");
+   System.out.println("main() : x =" + d.x);
 
-  
-  
-  
-  
-  
 }
+  public static void change(Data2 d) {
+    
+    d.x = 1000;
+    System.out.println("change() : x =" + d.x);
+    
+   
+  }
 
-
-
-
-
-
+  
 }
