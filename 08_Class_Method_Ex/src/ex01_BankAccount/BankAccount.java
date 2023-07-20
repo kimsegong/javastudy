@@ -21,6 +21,19 @@ public class BankAccount {
   
   private String accNo;
   
+  /**
+   * 이체 메소드<br>
+   * 다른 계좌로 이체하는 메소드로 기존의 입금 메소드와 출금 메소드를 활용한다.<br>
+   * 내 계좌에서 출금을 먼저 수행하고, 출금된 금액만큼 다른 계좌로 입금한다.
+   * @param acc   다른계좌
+   * @param money 이체할 금액
+   */
+  public void transfer(BankAccount acc, long money) {
+  
+    acc.deposit(withdrawal(money));  //순서대로 하기 때문에 괄호안에 먼저수행할거넣은 내계좌에서 출금먼저
+    
+  }
+  
   
   //getter
   public long getBalance() {
@@ -34,16 +47,16 @@ public class BankAccount {
   }
   
   //setter 
-  public void setBalance(long bankCall) {
-    balance = bankCall;
+  public void setBalance(long balance) {
+    this.balance = balance;
     
   }
-  public void setAccNo(String bankcoll) {
-    accNo = bankcoll;
+  public void setAccNo(String accNo) {
+    this.accNo =  accNo;
     
   }
   
-  
+  //동일한 메소드안에서는 객체만들필요없다.
   
   
   

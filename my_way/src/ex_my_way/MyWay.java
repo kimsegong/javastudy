@@ -18,6 +18,7 @@ public class MyWay {
 }
   public static void change(Data2 d) {
     
+    
     d.x = 1000;
     System.out.println("change() : x =" + d.x);
     
