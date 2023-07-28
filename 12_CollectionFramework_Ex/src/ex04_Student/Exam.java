@@ -31,4 +31,8 @@ public class Exam {
   public void setMath(int math) {
     this.math = math;
   }
+  @Override
+  public String toString() {
+    return "Exam [kor=" + kor + ", Eng=" + Eng + ", math=" + math + "]";
+  } 
 }
