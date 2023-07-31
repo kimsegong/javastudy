@@ -8,11 +8,23 @@ public class Ex01_String {
     // 문자열 표현 방법 : 큰 따움표로 문자열을 묶는다.
     String name1 = "tom";
     String name2 = "tom";
-    // 문자열 리터럴은 Java에 의해서 최적화되기 때문에
+ // 문자열 리터럴은 Java에 의해서 최적화되기 때문에
     // 동일한 리터럴이 2번 이상 나타나면 기존 리터럴을 재사용한다.
+    //
+    //       ┌--------------┐
+    //  name1│  0x12345678  │
+    //       │--------------│
+    //  name2│  0x12345678  │
+    //       │--------------│
+    //       │      ...     │
+    //       │--------------│
+    //       │      tom     │0x12345678
+    //       │--------------│
+    //       │      ...     │
+    //       └--------------┘
     
     // 문자열 리터럴 비교
-    // name1 과 name2의 참조값이 동일하다.
+    // name1과 name2의 참조값이 동일하다.
     boolean isEqual = name1 == name2;
     System.out.println(isEqual);
   }
@@ -21,7 +33,23 @@ public class Ex01_String {
     // 문자열 객체(Object)
     String name1 = new String("tom");
     String name2 = new String("tom");
-    // 문자열 객체는 항상 새로 생선된다.
+    // 문자열 객체는 항상 새로 생성된다.
+    //
+    //       ┌--------------┐
+    //  name1│  0x12345678  │
+    //       │--------------│
+    //  name2│  0x98765432  │
+    //       │--------------│
+    //       │      ...     │
+    //       │--------------│
+    //       │      tom     │0x12345678
+    //       │--------------│
+    //       │      ...     │
+    //       │--------------│
+    //       │      tom     │0x98765432
+    //       │--------------│
+    //       │      ...     │
+    //       └--------------┘
     
     // 문자열 객체 비교
     // name1과 name2의 참조값이 다르다.
@@ -117,7 +145,7 @@ public class Ex01_String {
     System.out.println(idx3);
     System.out.println(idx4);
   }
-  public static void ex09(){
+  public static void ex09()	{
     
     // lastIndexOf 메서드
     // 1. 발견된 마지막 문자열의 인덱스를 반환
@@ -129,6 +157,18 @@ public class Ex01_String {
     System.out.println(idx);
   }
   public static void ex10() {
+    
+    // contains 메소드
+    // 지정된 CharSequence(String, char[] 등)가 포함되어 있으면 true 반환, 아니면 false 반환
+    
+    String email = "admin@naver.com";
+    
+    // @가 포함되어 있는가?
+    if(email.contains("@")) {
+      System.out.println("@가 포함되어 있다.");
+    } else {
+      System.out.println("@가 포함되어 있지 않다.");
+    }
     
   }
   public static void ex11() {
@@ -177,8 +217,46 @@ public class Ex01_String {
     System.out.println(String.format("%10s", str)); // 10자리 문자열 표시, 문자열을 오른쪽정렬 처리
     System.out.println(String.format("%-10s", str)); // 10자리 문자열 표시, 문자열을 왼쪽 정렬 처리
   }
+  public static void ex13() {
+    
+    // 정규식을 활용한 메서드
+    // 1. startWith : 지정된 정규식 패턴으로 시작하면 true 반환
+    // 2. endsWith  : 지정된 정규식 패턴으로 끝나면 true로 반환
+    // 3. matches   : 지정된 정규식 패턴을 포함하면 true 반환
+    // 4. replaceAll: 지정된 정규식 패턴을 만족하는 부분을 다른 문자열로 변환
+    // 5. split     : 지정된 정규식 패턴으로 문자열을 분리하여 분리된 String배열을 반환
+    
+    String ip = "192.312.0.010";
+    String str = ip.replaceAll("[.]", "_");  // 정규식 패턴에서 .(마침표)는 모든문자를 의미하기때문에 [] 를 쳐서 결과가 나온거임
+    System.out.println(str);
+  }
+  public static void ex14() {
+    
+    // strip 메서드
+    // 앞 뒤에 포함된 공백 문자 제거
+    String name = "\n tom \n";
+    String str1 = name.strip();
+    System.out.println(str1.length()); //3
+    
+    // trim 메서드
+    // 앞 뒤에 포함된 공백 문자 제거
+    String str2 = name.trim();
+    System.out.println(str2.length());
+        
+    
+  }
+  public static void ex15() {
+    
+    // replace 메서드
+    // 1. 지정된 문자열을 다른 문자열로 변환
+    // 2. 발견된 모든 문자열을 변환
+    
+    String ip = "192.312.0.010";
+    String str = ip.replace(".", "_");
+    System.out.println(str);
+  }
     public static void main(String[] args) {
-    ex12();
+    ex15();
     
   }
 
