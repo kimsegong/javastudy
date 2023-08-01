@@ -79,7 +79,7 @@ public class BankAccount {
     if(money <= 0) {
       return;  //메서드를 종료
   }
-  balance += money;
+    balance += money;
   
 }
   /**

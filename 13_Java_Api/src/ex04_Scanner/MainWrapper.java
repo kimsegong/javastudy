@@ -13,7 +13,6 @@ public class MainWrapper {
      *  3. 사용자가 입력하는 데이터의 타입에 따라서 입력 메소드가 구분되어 있다.
      *      1) int    : nextInt();
      *      2) long   : nextLong();
-     *      ㄱ
      *      3) double : nextDouble();
      *      4) String 
      *        (1) 공백 없는 문자열 : next()

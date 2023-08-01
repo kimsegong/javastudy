@@ -24,9 +24,7 @@ public class MainWrapper {
     count++;
     System.out.println("입력한 값이" + blank);  
   }
-  
 
-  
 }
 
   // 문제2. "대한민국의 수도는?" 퀴즈 정답을 맞힐때까지 계속 퀴즈를 내시오.
@@ -175,10 +173,8 @@ public class MainWrapper {
         break;
       }else {
         System.out.println("오답");
-      }
-      
+      }     
     }
-    
   }
   
   public static void main(String[] args) {
