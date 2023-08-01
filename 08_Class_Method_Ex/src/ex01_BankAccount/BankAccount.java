@@ -88,6 +88,7 @@ public class BankAccount {
    * 파라미터가 통장잔액(balance)보다 크면 출금된 금액이 없으므로 0을 반환한다.
    * @param money 출금할 금액
    * @return 실제로 출금된 금액
+   * @exception 
    */
   public long withdrawal(long money) {
     long retVal = 0;

@@ -1,5 +1,7 @@
 package ex03_random;
 
+import java.util.Random;
+
 public class MainWrapper {
 
   // 문제1. 주사위 3개 던지기.
@@ -22,7 +24,13 @@ public class MainWrapper {
   // 출금 전 18원, 5회 출금액 17원, 출금 후 1원
   // 출금 전 1원, 6회 출금액 1원, 출금 후 0원
   public static void ex02() {
+    int n = 0;
     int balance = 5000;  // 통장
+    Random random = new Random();
+    int randomNumber = random.nextInt(2083);
+    balance -= randomNumber;
+    n ++;
+    System.out.println("출금전" + n + "출금액" +  randomNumber + "출금후" + balance );
     
   }
   
