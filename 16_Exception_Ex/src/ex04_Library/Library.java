@@ -40,6 +40,7 @@ public class Library {
     
   }
   /**
+   *
    * 조회<br>
    */
   public void queryBook() {
@@ -50,25 +51,26 @@ public class Library {
    */
   public void queryAllBook() throws RuntimeException {   
     System.out.println("=== 전체조회 ===");
-    System.out.println("전체 보유 도서수:" + books.size() + "권");
+    int size = books.size();
+    System.out.println("전체 보유 도서수:" + size + "권");
     if(books.isEmpty()) {
     throw new RuntimeException("책이없네?");
+    }
+    for(int i = 0; i < size; i++ ) {
+      System.out.println((i + 1) + "번째 도서:" + books.get(i));
     }
   }
   /**
    * 운영<br>
    */
   public void manage() {
-    // 사용자가 종료 명령을 내릴때까지 프로그램은 종료되지 않는다.
-    
-    
+    // 사용자가 종료 명령을 내릴때까지 프로그램은 종료되지 않는다.  
     while(true) {
       
       try {
       System.out.println("1.등록 2.삭제 3.수정 4. 조회 5.전체조회 0.종료");
       String choice = sc.next();
-   
-      
+         
       switch(choice) {
       case "1": addBook(); break;
       case "2": deleteBook(); break;
@@ -80,9 +82,8 @@ public class Library {
       }      
       }  catch(Exception e) {
         System.out.println(e.getMessage());
-      }
-      
-      } //while(true)
-    }// manage()
+      }      
+    } //while(true)
+  }// manage()
   
 }
