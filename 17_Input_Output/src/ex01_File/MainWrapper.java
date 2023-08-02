@@ -68,11 +68,19 @@ public class MainWrapper {
   public static void ex03() {
     
     // 파일, 디렉터리 정보 확인
+    // listFiles()    : 모든 File 객체를 저장한 File[] 반환
+    // getName()      : 이름 반환
+    // getParent()    : 저장된 디렉터리 반환
+    // getPath()      : getParent() + getName()
+    // lastModified() : 최종수정일을 long 타입으로 반환 SimpleDateFormat 
+    // length()       : 크기를 long 타입의 바이트 단위로 반환
+    // isDirectory()  : 디렉터리이면 true 반환
+    // isFile()       : 파일이면 true 반환
     
     // 디렉터리를 File 객체로 생성
     File dir = new File("C:/Program Files/Java/jdk-11");
     
-    // 디렉터리에 있는 모든 File 객체(파일, 디렉터리) 가져오기
+    // 디렉터리에 있는 모든 File 객체(파일, 디렉터리) 가져오기//중요
     File[] files = dir.listFiles();
     
     // 디렉터리에 있는 모든 File 객체의 정보 확인하기
@@ -89,7 +97,8 @@ public class MainWrapper {
       
       // File 객체 최종수정일
       long lastModified = file.lastModified();
-      String strLastModified = new SimpleDateFormat("yyyy-MM-dd a h:mm").format(lastModified);
+      String strLastModified =
+      new SimpleDateFormat("yyyy-MM-dd a h:mm").format(lastModified);
       sb.append(String.format("%-20s", strLastModified));
       
       // File 객체 유형(파일, 디렉터리)
@@ -97,10 +106,11 @@ public class MainWrapper {
       sb.append(String.format("%-10s", kind));
       
       // File 객체 크기
-      long size = file.isFile() ? file.length() : 0;  // 파일은 바이트 단위로 크기가 저장, 
-      long KbSize = (size / 1024) + (size % 1024 != 0 ? 1 : 0);// 디렉터리는 크기가 없으므로 0으로 저장한다.
-      sb.append(String.format("%10s", KbSize + "KB"));
-      
+      long size = file.isFile() ? file.length() : 0;        // 파일은 바이트 단위로 크기가 저장, 
+      long KbSize = (size / 1024) + (size % 1024 != 0 ? 1 : 0);    // 디렉터리는 크기가 없으므로 0으로 저장한다.
+      if( size != 0) {
+        sb.append(String.format("%10s", KbSize + "KB")); 
+      }     
       // StringBuilder 객체를 String으로 변환
       String str = sb.toString();
       
@@ -112,7 +122,7 @@ public class MainWrapper {
    
     ex03();
     
-
+ 
   }
 
 }
