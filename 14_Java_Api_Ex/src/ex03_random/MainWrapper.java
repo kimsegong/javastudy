@@ -1,5 +1,6 @@
 package ex03_random;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class MainWrapper {
@@ -39,6 +40,9 @@ public class MainWrapper {
   // 실행예시)
   // 인증코드: [966419]
   public static void ex03() {
+    SecureRandom secureRandom = new SecureRandom();
+    int secureRandom1 = secureRandom.nextInt(6); 
+    System.out.println(secureRandom1);
     
   }
   

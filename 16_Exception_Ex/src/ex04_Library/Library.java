@@ -30,21 +30,72 @@ public class Library {
   /**
    * 삭제<br>
    */
-  public void deleteBook() {
-    
+  public void deleteBook() throws RuntimeException {
+    System.out.println("=== 삭제 ===");
+    if(books.isEmpty()) {
+      throw new RuntimeException("도서관에 등록된 책이 없습니다.");
+    }
+    System.out.println("삭제할 책의 제목 입력>>>");
+    String title = sc.next();
+    if(title.isEmpty()) {
+      throw new RuntimeException("삭제할 책의 제목이 입력되지 않았습니다.");
+    }
+    // 객체 기반 삭제(동일한 객체를 찾아서 삭제)
+    // 동일한 객체인지 비교하기 위해서는 Book 클래스에 equal 메서드가 오버라이드 되어있어야한다.
+    for(Book book : books) {
+      if(title.equals(book.getTitle())) {
+        books.remove(book);
+        System.out.println(book + "책이 삭제되었습니다.");   
+        return;           
+      }
+    }
+    System.out.println(title + "제목을 가진 책이 없습니다.");
   }
   /**
    * 수정<br>
    */
-  public void modifyBook() {
-    
+  public void modifyBook() throws RuntimeException, InputMismatchException {
+    System.out.println("=== 수정 ===");
+    if(books.isEmpty()) {
+      throw new RuntimeException("도서관에 등록된 책이 없습니다.");
+    }
+    System.out.println("수정할 책의 제목 입력>>>");
+    String title = sc.next();
+    if(title.isEmpty()) {
+      throw new RuntimeException("수정할 책의 제목이 입력되지 않았습니다.");
+    }
+    for(Book book : books) {
+      if(title.equals(book.getTitle())) {
+        System.out.println("수정할 책의 가격 입력>>>");
+        int price = sc.nextInt();
+        book.setPrice(price);
+        System.out.println(title + "책의 가격이" + price +"원 으로 수정되었습니다.");   
+        return;           
+      }
+    }
+    System.out.println(title + "제목을 가진 책이 없습니다.");
   }
   /**
-   *
    * 조회<br>
+   * 조회할 책의 제목을 입력 받아서 해당 책의 정보를 출력하는 메서드
    */
-  public void queryBook() {
-    
+  public void queryBook() throws RuntimeException {
+    System.out.println("=== 조회 ===");
+    if(books.isEmpty()) {
+      throw new RuntimeException("도서관에 등록된 책이 없습니다.");
+    }
+    System.out.println("조회할 책의 제목 입력>>>");
+    String title = sc.next();
+    if(title.isEmpty()) {
+      throw new RuntimeException("조회할 책의 제목이 입력되지 않았습니다.");
+    }
+    for(Book book : books) {
+      if(title.equals(book.getTitle())) {
+        System.out.println(book + "책이 조회되었습니다.");   
+        return;           
+      }
+    }
+    System.out.println(title + "제목을 가진 책이 없습니다.");
   }
   /**
    * 전제조회<br>
