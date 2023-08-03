@@ -15,7 +15,7 @@ public class MainWrapper {
     int[] dice = new int[3];
    Random random = new Random();
    for(int i = 0; i < dice.length; i++) {
-     dice[i] = random.nextInt(5) + 1; 
+     dice[i] = random.nextInt(6) + 1;     
    }
    System.out.println(Arrays.toString(dice));
   }
@@ -33,13 +33,13 @@ public class MainWrapper {
   public static void ex02() {
     int balance = 5000;  // 통장
     int nth = 0;  // 회차
-    while(balance > 0 ) {
-      int withrawal = (int)(Math.random()) * balance + 1 ;
-      nth++;
-      
-    System.out.println("출금전" + balance + nth + "회 출금액" + withrawal + "원" + (balance -= withrawal) + "원");
+    while(balance > 0) {
+    int withrawal = (int)(Math.random()) * balance + 1;
+    nth++;
+    System.out.println("출금전" + balance + "원" + nth + "회" + withrawal + "원" + "출금후" + (balance -= withrawal) + "원");
+    }
   }
-  }
+  
   
   // 문제3. 인증코드 6자리 만들기.
   // 0~9 사이 값을 이용하여 임의의 인증코드 6자리를 생성하시오. SecureRandom 클래스를 활용하시오.
@@ -49,10 +49,10 @@ public class MainWrapper {
     SecureRandom secureRandom = new SecureRandom();
     String code = "";
     for(int n = 0; n < 6; n++) {
-      code += secureRandom.nextInt(9);
-      
+    code += secureRandom.nextInt(6);     
     }
     System.out.println("인증코드:" + "[" + code + "]");
+    
   }
   
   // 문제4. 구구단을 외자.
@@ -66,13 +66,13 @@ public class MainWrapper {
   //   8x7? >>> 49
   //   땡
   public static void ex04() {
-   int n = (int)(Math.random()) * 8 + 2;
-   int dan = (int)(Math.random()) * 9 + 1;
-   System.out.println(n + "x" + dan + "?");
-   Scanner sc = new Scanner(System.in);
-   int result = sc.nextInt();
-   System.out.println(result == n * dan ? "정답" : "땡!");
-   
+    int n = (int)(Math.random()) * 8 + 2;
+    int dan = (int)(Math.random()) * 9 + 1;
+    System.out.println( n + "x" + dan + "?");
+    Scanner sc = new Scanner(System.in);
+    int a = sc.nextInt();
+    System.out.println(a == n * dan ? "정답" : "떙");
+    
   }
   
   // 문제5. 자동으로 진행되는 윷 던지기를 구현하시오. 윷이나 모가 나오면 추가로 던지시오.
@@ -277,11 +277,11 @@ public class MainWrapper {
     }
   }
   public static void main(String[] args) {
-    ex01();
-    ex02();
+    //ex01();
+    //ex02();
     ex03();
     ex04();
-    ex05();
+//  ex05();
 //    ex06();
 //    ex07();
 //    ex08();
