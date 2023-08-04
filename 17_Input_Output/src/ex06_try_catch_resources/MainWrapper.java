@@ -27,7 +27,7 @@ public class MainWrapper {
     // 파일을 File 객체로 생성
     File file = new File(dir, "ex01.txt");
     
-    // try 블록에서 출력스트림 생성하기
+    // try 블록에서 출력스트림 생성하기 
     try(BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {//추가모드
     
     // 출력할 데이터
