@@ -143,13 +143,13 @@ public class MainWrapper {
   }
   public static void ex04() {
     
-    // 바이트 출력스트림으로 보낸 문자를 바이트 입력스트림으로 읽기 (한글 실패)
+    // 바이트 출력스트림으로 보낸 문자(서버라고 생각)를 바이트 입력스트림으로 읽기 (한글 실패)
     // 바이트 출력스트림으로 보낸 문자를 문자 입력스트림으로 읽기(한글 성공)
     
     // 1단계. 바이트 출력스트림으로 문자 보내기
     File dir = new File("C:/storage");
     if(dir.exists() == false) {
-      dir.mkdirs();
+       dir.mkdirs();
     }
     File file = new File(dir, "server.dat");
     BufferedOutputStream bout = null;

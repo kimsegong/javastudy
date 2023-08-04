@@ -1,10 +1,10 @@
 package ex01_weather;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -13,51 +13,63 @@ public class MainWrapper {
 
   public static void main(String[] args) {
     
-    // 1시간마다 갱신되는 전국 날씨 정보
+    // C:/storage/sfc_web_map.xml 파일로 저장하기
+
+    // 1시간마다 갱신되는 전국 날씨 정보 URL
     String spec = "http://www.kma.go.kr/XML/weather/sfc_web_map.xml";
 
+    // URL 객체 선언
     URL url = null;
     
+    // HttpURLConnection 객체 선언
     HttpURLConnection con = null;
-
-    BufferedInputStream bin = null;
-
-    BufferedOutputStream bout = null;
+    
+    // 입력스트림 선언 (전국 날씨 정보를 읽는 스트림)
+    BufferedReader br = null;
+    
+    // 출력스트림 선언 (C:/storage/sfc_web_map.xml 파일을 만드는 스트림)
+    BufferedWriter bw = null;
+    
     try {
-      url = new URL(spec); 
+      
+      // URL 객체 생성
+      url = new URL(spec);
+      
+      // HttpURLConnection 객체 생성
       con = (HttpURLConnection) url.openConnection();
-      bin = new BufferedInputStream(con.getInputStream());
-   
-    // C:/storage/sfc_web_map.xml 파일로 저장하기
-    File dir = new File("C:/storage");
-    if(dir.exists() == false) {
-      dir.mkdirs();
-    }
-    File file = new File(dir, "sfc_web_map.xml");
-    
-    bout = new BufferedOutputStream(new FileOutputStream(file));
-    byte[] b = new byte[1024];  
-   
-    int readByte = 0;
-
-    while((readByte = bin.read(b)) != -1) {
-      bout.write(b, 0, readByte);
-    }
-    
-    }catch (MalformedURLException e) {
-      System.out.println("URL 주소 오류");
-    } catch (IOException e) {
-      System.out.println("URL 접속 오류"); 
+      
+      // 입력스트림 생성 (전국 날씨 정보를 읽는 스트림)
+      br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+      
+      // 출력스트림 생성 (C:/storage/sfc_web_map.xml 파일을 만드는 스트림)
+      bw = new BufferedWriter(new FileWriter("C:/storage/sfc_web_map.xml"));
+      
+      // 입력된 문자열을 저장할 변수
+      String line = null;      
+      
+      // 반복문 : 읽은 내용이 null이 아니면 계속 읽어서 파일로 보낸다.
+      while((line = br.readLine()) != null) {
+        bw.write(line);
+        bw.newLine();
+      }
+      
+      // 메시지
+      System.out.println("파일 생성 완료");
+      
+    } catch(MalformedURLException e) {
+      System.out.println(e.getMessage());
+    } catch(IOException e) {
+      System.out.println(e.getMessage());
     } finally {
       try {
-        // 생성의 역순으로 닫기
-        if(bout != null) { bout.close(); }
-        if(bin != null) { bin.close(); }
-        if(con != null) { con.disconnect(); }
-      } catch(IOException e) {
-        e.printStackTrace();
+        if(bw != null) bw.close();
+        if(br != null) br.close();
+        if(con != null) con.disconnect();
+      } catch (IOException e) {
+        System.out.println(e.getMessage());
       }
     }
+    
   }
+  
 }
-

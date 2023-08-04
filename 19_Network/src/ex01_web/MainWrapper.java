@@ -186,7 +186,7 @@ public class MainWrapper {
     } catch (MalformedURLException e) {
       System.out.println("URL 주소 오류");
     } catch (IOException e) {
-      System.out.println("URL 접속 오류");
+      System.out.println("URL 접속 오류"); 
     } finally {
       try {
         // 생성의 역순으로 닫기
