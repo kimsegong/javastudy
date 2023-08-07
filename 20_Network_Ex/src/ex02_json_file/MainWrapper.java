@@ -1,15 +1,20 @@
 package ex02_json_file;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 
 public class MainWrapper {
@@ -71,20 +76,68 @@ public class MainWrapper {
       e.printStackTrace();
     }
   }
- public static void ex02() {
+  public static void ex02() {
      
     // 문제. 아래 링크에 연결된 JSON 파일을 모두 읽은 뒤 아래 데이터를 가져와서 출력하시오.
     // 가져올 데이터)
     // ○ (강수) 10일(목) 전국에, 11일(금) 오전 수도권과 강원도에 비가 오겠습니다.<br />○ (기온) 이번 예보기간 아침 기온은 23~26도, 낮 기온은 27~33도로 평년(최저기온 22~24도, 최고기온 29~32도)과 비슷하겠습니다. <br />○ (해상) 전해상에 10일(목)까지, 동해상은 11일(금)까지 물결이 1.0~4.0m(동해상과 남해동부해상 5.0m 이상)로 매우 높게 일겠습니다.<br />○ (주말전망) 12일(토)과 13일(일)은 전국이 구름많겠습니다. 아침 기온은 23~26도, 낮 기온은 30~33도가 되겠습니다.
 
-    String spec = "https://gdlms.cafe24.com/uflist/curri/10014/bbs/231_64d09afdc7c01.json";
     
+    
+    // String으로 모두 받기
+    
+    
+    // String -> JSONObject 변환
+    
+    // 원하는 정보 추출하기(Parsing)
+   
+      String spec = "https://gdlms.cafe24.com/uflist/curri/10014/bbs/231_64d09afdc7c01.json";
+      URL url = null;
+      HttpURLConnection con = null;
+      BufferedReader reader = null;
+      try {
+      url = new URL(spec);
+      con = (HttpURLConnection) url.openConnection();
+      reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+      StringBuilder sb = new StringBuilder();
+      String line = null;
+
+      while ((line = reader.readLine()) != null) {
+           sb.append(line);
+      }
+      reader.close();
+
+      // JSON 파싱
+      JSONObject obj = new JSONObject(sb.toString());
+
+      JSONObject rss = obj.getJSONObject("rss");
+      JSONObject channel = rss.getJSONObject("channel");
+      JSONObject item = channel.getJSONObject("item");
+      JSONObject description = item.getJSONObject("description");
+      JSONObject header = description.getJSONObject("header");
+      String wf = header.getString("wf");
+      System.out.println(wf.replace("<br />", "\n"));
+      // "DESCRIPTION" 키가 포함된 객체 확인
+      
+  } catch (Exception e) {
+      e.printStackTrace();
+  } finally {
+    try {
+      if(reader != null) reader.close();
+      if(con != null) con.disconnect();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
-  
-  
+}
+
+
   public static void main(String[] args) {
-    
-    
+    ex02();
+   
+
+            
+
   }
 
 }
