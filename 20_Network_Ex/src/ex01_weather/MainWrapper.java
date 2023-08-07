@@ -13,48 +13,48 @@ public class MainWrapper {
 
   public static void main(String[] args) {
     
-    // C:/storage/sfc_web_map.xml 파일로 저장하기
+    // C:/storage/sfc_web_map.xml �뙆�씪濡� ���옣�븯湲�
 
-    // 1시간마다 갱신되는 전국 날씨 정보 URL
+    // 1�떆媛꾨쭏�떎 媛깆떊�릺�뒗 �쟾援� �궇�뵪 �젙蹂� URL
     String spec = "http://www.kma.go.kr/XML/weather/sfc_web_map.xml";
 
-    // URL 객체 선언
+    // URL 媛앹껜 �꽑�뼵
     URL url = null;
     
-    // HttpURLConnection 객체 선언
+    // HttpURLConnection 媛앹껜 �꽑�뼵
     HttpURLConnection con = null;
     
-    // 입력스트림 선언 (전국 날씨 정보를 읽는 스트림)
+    // �엯�젰�뒪�듃由� �꽑�뼵 (�쟾援� �궇�뵪 �젙蹂대�� �씫�뒗 �뒪�듃由�)
     BufferedReader br = null;
     
-    // 출력스트림 선언 (C:/storage/sfc_web_map.xml 파일을 만드는 스트림)
+    // 異쒕젰�뒪�듃由� �꽑�뼵 (C:/storage/sfc_web_map.xml �뙆�씪�쓣 留뚮뱶�뒗 �뒪�듃由�)
     BufferedWriter bw = null;
     
     try {
       
-      // URL 객체 생성
+      // URL 媛앹껜 �깮�꽦
       url = new URL(spec);
       
-      // HttpURLConnection 객체 생성
+      // HttpURLConnection 媛앹껜 �깮�꽦
       con = (HttpURLConnection) url.openConnection();
       
-      // 입력스트림 생성 (전국 날씨 정보를 읽는 스트림)
+      // �엯�젰�뒪�듃由� �깮�꽦 (�쟾援� �궇�뵪 �젙蹂대�� �씫�뒗 �뒪�듃由�)
       br = new BufferedReader(new InputStreamReader(con.getInputStream()));
       
-      // 출력스트림 생성 (C:/storage/sfc_web_map.xml 파일을 만드는 스트림)
+      // 異쒕젰�뒪�듃由� �깮�꽦 (C:/storage/sfc_web_map.xml �뙆�씪�쓣 留뚮뱶�뒗 �뒪�듃由�)
       bw = new BufferedWriter(new FileWriter("C:/storage/sfc_web_map.xml"));
       
-      // 입력된 문자열을 저장할 변수
+      // �엯�젰�맂 臾몄옄�뿴�쓣 ���옣�븷 蹂��닔
       String line = null;      
       
-      // 반복문 : 읽은 내용이 null이 아니면 계속 읽어서 파일로 보낸다.
+      // 諛섎났臾� : �씫�� �궡�슜�씠 null�씠 �븘�땲硫� 怨꾩냽 �씫�뼱�꽌 �뙆�씪濡� 蹂대궦�떎.
       while((line = br.readLine()) != null) {
         bw.write(line);
         bw.newLine();
       }
       
-      // 메시지
-      System.out.println("파일 생성 완료");
+      // 硫붿떆吏�
+      System.out.println("�뙆�씪 �깮�꽦 �셿猷�");
       
     } catch(MalformedURLException e) {
       System.out.println(e.getMessage());
@@ -71,5 +71,5 @@ public class MainWrapper {
     }
     
   }
-  
+  asdfghj
 }
