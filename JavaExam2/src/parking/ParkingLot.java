@@ -54,7 +54,7 @@ public class ParkingLot {
     String CarNo = sc.next();
     for(Car car : cars) {
       if(CarNo.equals(car.getCarNo())) { 
-          System.out.println("조회결과:"  + car.getCarNo() + "모델명 " + car.getModel());
+          System.out.println("조회결과:"  + car.toString());
         
         return;           
       }
